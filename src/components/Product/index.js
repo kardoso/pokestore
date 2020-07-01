@@ -37,7 +37,7 @@ const Price = styled.p`
 const Button = styled.button`
   outline: none;
   border: none;
-  background-color: #3b6bb8;
+  background-color: #ffcc03;
   color: #fff;
   border-radius: 8px;
   padding: 8px 4px;
