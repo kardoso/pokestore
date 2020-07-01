@@ -1,3 +1,4 @@
 import Topbar from "./Topbar";
+import ProductsView from "./ProductsView";
 
-export { Topbar };
+export { Topbar, ProductsView };

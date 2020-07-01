@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Topbar } from "./components";
+import { Topbar, ProductsView } from "./components";
 
 function App() {
   return (
     <div className="App">
       <Topbar />
+      <ProductsView />
     </div>
   );
 }
