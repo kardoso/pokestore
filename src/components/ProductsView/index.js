@@ -6,8 +6,30 @@ import Product from "../Product";
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
+`;
+
+const ProductsWrapper = styled.div`
+  width: 100%;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
+`;
+
+const ButtonsWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const NavigationButton = styled.button`
+  outline: none;
+  border: none;
+  background-color: #3b6bb8;
+	color: #fff;
+  border-radius: 8px;
+  padding: 8px 4px;
+  cursor: pointer;
 `;
 
 function ProductsView() {
@@ -50,9 +72,27 @@ function ProductsView() {
 
   return (
     <Wrapper>
-      {products.map((product) => (
-        <Product key={product.id} data={product}></Product>
-      ))}
+      <ProductsWrapper>
+        {products.map((product) => (
+          <Product key={product.id} data={product}></Product>
+        ))}
+      </ProductsWrapper>
+      <ButtonsWrapper>
+        {pageNavigation.previous !== null ? (
+          <NavigationButton onClick={handlePreviousPage}>
+            {"<"} Página anterior
+          </NavigationButton>
+        ) : (
+          <div />
+        )}
+        {pageNavigation.next !== null ? (
+          <NavigationButton onClick={handleNextPage}>
+            Próxima página {">"}
+          </NavigationButton>
+        ) : (
+          <div />
+        )}
+      </ButtonsWrapper>
     </Wrapper>
   );
 }
