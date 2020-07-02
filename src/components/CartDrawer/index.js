@@ -1,10 +1,23 @@
 import React from "react";
 import Drawer from "@material-ui/core/Drawer";
+import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 import { CartView } from "..";
+
+const CartLink = styled.a`
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1em;
+  padding-right: 8px;
+  font-weight: bold;
+`;
+
+const ItemsCount = styled.span`
+  color: red;
+`;
 
 export default function CartDrawer({ cart, clearCart }) {
   const [state, setState] = React.useState({
@@ -25,12 +38,12 @@ export default function CartDrawer({ cart, clearCart }) {
 
   return (
     <React.Fragment>
-      <a href="/" className="cart" onClick={toggleDrawer("right", true)}>
+      <CartLink href="/" className="cart" onClick={toggleDrawer("right", true)}>
         <span>
+          <ItemsCount className="cart__indicator">{cart.length}</ItemsCount>
           <FontAwesomeIcon icon={faShoppingCart} className="cart__icon" />
-          <span className="cart__indicator">1</span>
         </span>
-      </a>
+      </CartLink>
       <Drawer
         anchor={"right"}
         open={state["right"]}

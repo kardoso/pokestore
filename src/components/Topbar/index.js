@@ -24,7 +24,7 @@ const Logo = styled.img`
 function Topbar({ cart, clearCart }) {
   return (
     <Wrapper>
-      <Logo src="/img/pokestore.png" />
+      <Logo src="/img/pokestore.png" style={{ margin: "auto" }} />
       <CartDrawer cart={cart} clearCart={clearCart} />
     </Wrapper>
   );
