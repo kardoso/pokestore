@@ -10,6 +10,11 @@ const MainContainer = styled.div`
   align-items: center;
 `;
 
+const ProductsContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
+
 function App() {
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || []
@@ -35,8 +40,10 @@ function App() {
   return (
     <MainContainer className="App">
       <Topbar />
-      <ProductsView addToCart={handleAddToCart} />
-      <CartView cart={cart} clearCart={handleClearCart} />
+      <ProductsContainer>
+        <ProductsView addToCart={handleAddToCart} />
+        <CartView cart={cart} clearCart={handleClearCart} />
+      </ProductsContainer>
     </MainContainer>
   );
 }
