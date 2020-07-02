@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { Topbar, ProductsView, CartView } from "./components";
+import { Topbar, ProductsView } from "./components";
 
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const ProductsContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
 `;
 
 function App() {
@@ -39,11 +34,8 @@ function App() {
 
   return (
     <MainContainer className="App">
-      <Topbar />
-      <ProductsContainer>
-        <ProductsView addToCart={handleAddToCart} />
-        <CartView cart={cart} clearCart={handleClearCart} />
-      </ProductsContainer>
+      <Topbar cart={cart} clearCart={handleClearCart} />
+      <ProductsView addToCart={handleAddToCart} />
     </MainContainer>
   );
 }

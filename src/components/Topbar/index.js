@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import CartDrawer from "../CartDrawer";
+
 const Wrapper = styled.div`
   margin: 0;
   padding: 0;
@@ -19,10 +21,11 @@ const Logo = styled.img`
   max-height: 70%;
 `;
 
-function Topbar() {
+function Topbar({ cart, clearCart }) {
   return (
     <Wrapper>
       <Logo src="/img/pokestore.png" />
+      <CartDrawer cart={cart} clearCart={clearCart} />
     </Wrapper>
   );
 }

@@ -2,16 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 100%;
-  max-width: 420px;
+  min-width: 280px;
+  max-width: 80%;
   display: flex;
   flex-direction: column;
+  padding: 12px;
 `;
 
 const CartWrapper = styled.div`
   width: 100%;
-  max-height: 360px;
-  overflow-y: scroll;
 `;
 
 const Title = styled.h2`
@@ -77,7 +76,7 @@ const PurchaseButton = styled.button`
   cursor: pointer;
 `;
 
-function CartView({ cart, clearCart }) {
+function CartView({ cart, clearCart, closeCart }) {
   return (
     <Wrapper>
       <Title>Carrinho</Title>
