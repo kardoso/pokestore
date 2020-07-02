@@ -64,6 +64,19 @@ const CenterText = styled.p`
   text-align: center;
 `;
 
+const PurchaseButton = styled.button`
+  width: 100%;
+  background-color: #3b6bb8;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  margin: 4px 0px;
+  padding: 8px;
+  cursor: pointer;
+`;
+
 function CartView({ cart }) {
   return (
     <Wrapper>
@@ -91,6 +104,7 @@ function CartView({ cart }) {
               )
               .reduce((a, b) => a + b, 0)}
       </TotalPrice>
+      <PurchaseButton>Finalizar compra</PurchaseButton>
     </Wrapper>
   );
 }
