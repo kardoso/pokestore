@@ -15,6 +15,9 @@ const Wrapper = styled.div`
   border-bottom-style: solid;
   border-bottom-color: #c0c0c0;
   border-bottom-width: 1px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   @media (max-width: 360px) {
     flex-direction: column;
@@ -24,13 +27,14 @@ const Wrapper = styled.div`
 
 const Logo = styled.img`
   width: auto;
-  height: auto;
+  max-width: 190px;
   max-height: 70%;
   margin-right: auto;
   padding: 0px 12px 8px;
 
   @media (max-width: 360px) {
     width: 80%;
+    max-height: auto;
     margin-left: auto;
   }
 `;
