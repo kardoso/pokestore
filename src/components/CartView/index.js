@@ -1,5 +1,43 @@
 import React from "react";
 import styled from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: "absolute",
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    color: "#333",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+  closeButton: {
+    backgroundColor: "#7FF4A8",
+    color: "#333",
+    outline: "none",
+    border: "none",
+    padding: "8px",
+    borderRadius: "8px",
+    fontWeight: "bold",
+    cursor: "pointer",
+  },
+}));
 
 const Wrapper = styled.div`
   min-width: 280px;
@@ -76,7 +114,34 @@ const PurchaseButton = styled.button`
   cursor: pointer;
 `;
 
-function CartView({ cart, clearCart, closeCart }) {
+function CartView({ cart, clearCart }) {
+  const classes = useStyles();
+  // getModalStyle is not a pure function, we roll the style only on the first render
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const body = (
+    <div style={modalStyle} className={classes.paper}>
+      <h2 id="simple-modal-title">Compra efetuada!</h2>
+      <p id="simple-modal-description">Agradecemos pela sua compra.</p>
+      <button onClick={() => setOpen(false)} className={classes.closeButton}>
+        Fechar
+      </button>
+    </div>
+  );
+
+  const finishPurchase = () => {
+    handleOpen();
+    clearCart();
+  };
   return (
     <Wrapper>
       <Title>Carrinho</Title>
@@ -103,7 +168,15 @@ function CartView({ cart, clearCart, closeCart }) {
               )
               .reduce((a, b) => a + b, 0)}
       </TotalPrice>
-      <PurchaseButton onClick={clearCart}>Finalizar compra</PurchaseButton>
+      <PurchaseButton onClick={finishPurchase}>Finalizar compra</PurchaseButton>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {body}
+      </Modal>
     </Wrapper>
   );
 }
