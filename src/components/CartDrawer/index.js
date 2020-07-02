@@ -42,6 +42,7 @@ export default function CartDrawer({ cart, clearCart }) {
         <span>
           <ItemsCount className="cart__indicator">{cart.length}</ItemsCount>
           <FontAwesomeIcon icon={faShoppingCart} className="cart__icon" />
+          Carrinho
         </span>
       </CartLink>
       <Drawer

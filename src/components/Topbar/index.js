@@ -15,16 +15,30 @@ const Wrapper = styled.div`
   border-bottom-style: solid;
   border-bottom-color: #c0c0c0;
   border-bottom-width: 1px;
+
+  @media (max-width: 360px) {
+    flex-direction: column;
+    height: 86px;
+  }
 `;
 
 const Logo = styled.img`
+  width: auto;
+  height: auto;
   max-height: 70%;
+  margin-right: auto;
+  padding: 0px 12px 8px;
+
+  @media (max-width: 360px) {
+    width: 80%;
+    margin-left: auto;
+  }
 `;
 
 function Topbar({ cart, clearCart }) {
   return (
     <Wrapper>
-      <Logo src="/img/pokestore.png" style={{ margin: "auto" }} />
+      <Logo src="/img/pokestore.png" />
       <CartDrawer cart={cart} clearCart={clearCart} />
     </Wrapper>
   );
