@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Topbar, ProductsView } from "./components";
+import { Topbar, ProductsView, CartView } from "./components";
 
 function App() {
   const [cart, setCart] = useState(
@@ -23,6 +23,7 @@ function App() {
     <div className="App">
       <Topbar />
       <ProductsView addToCart={handleAddToCart} />
+      <CartView cart={cart} />
     </div>
   );
 }
