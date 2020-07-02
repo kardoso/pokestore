@@ -1,6 +1,14 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 import { Topbar, ProductsView, CartView } from "./components";
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 function App() {
   const [cart, setCart] = useState(
@@ -20,11 +28,11 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <MainContainer className="App">
       <Topbar />
       <ProductsView addToCart={handleAddToCart} />
       <CartView cart={cart} />
-    </div>
+    </MainContainer>
   );
 }
 
