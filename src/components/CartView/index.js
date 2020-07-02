@@ -77,7 +77,7 @@ const PurchaseButton = styled.button`
   cursor: pointer;
 `;
 
-function CartView({ cart }) {
+function CartView({ cart, clearCart }) {
   return (
     <Wrapper>
       <Title>Carrinho</Title>
@@ -104,7 +104,7 @@ function CartView({ cart }) {
               )
               .reduce((a, b) => a + b, 0)}
       </TotalPrice>
-      <PurchaseButton>Finalizar compra</PurchaseButton>
+      <PurchaseButton onClick={clearCart}>Finalizar compra</PurchaseButton>
     </Wrapper>
   );
 }

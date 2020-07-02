@@ -27,11 +27,16 @@ function App() {
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
+  const handleClearCart = () => {
+    localStorage.removeItem("cart");
+    setCart([]);
+  };
+
   return (
     <MainContainer className="App">
       <Topbar />
       <ProductsView addToCart={handleAddToCart} />
-      <CartView cart={cart} />
+      <CartView cart={cart} clearCart={handleClearCart} />
     </MainContainer>
   );
 }
