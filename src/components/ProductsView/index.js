@@ -26,13 +26,13 @@ const NavigationButton = styled.button`
   outline: none;
   border: none;
   background-color: #3b6bb8;
-	color: #fff;
+  color: #fff;
   border-radius: 8px;
   padding: 8px 4px;
   cursor: pointer;
 `;
 
-function ProductsView() {
+function ProductsView({ addToCart }) {
   const [products, setProducts] = useState([]);
   const [pageNavigation, setPageNavigation] = useState({});
   const [apiUrl, setApiUrl] = useState(
@@ -74,7 +74,11 @@ function ProductsView() {
     <Wrapper>
       <ProductsWrapper>
         {products.map((product) => (
-          <Product key={product.id} data={product}></Product>
+          <Product
+            key={product.id}
+            data={product}
+            addToCart={addToCart}
+          ></Product>
         ))}
       </ProductsWrapper>
       <ButtonsWrapper>

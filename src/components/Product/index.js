@@ -44,24 +44,13 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-function Product({ data }) {
-  const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push({
-      id: data.id,
-      name: data.name,
-      image: data.image,
-      price: data.price,
-    });
-    localStorage.setItem("cart", JSON.stringify(cart));
-  };
-
+function Product({ data, addToCart }) {
   return (
     <Wrapper href="/">
       <Image src={data.image} alt={data.name} />
       <Title>{data.name}</Title>
       <Price>{data.price}</Price>
-      <Button onClick={handleAddToCart}>Adicionar ao carrinho</Button>
+      <Button onClick={() => addToCart(data)}>Adicionar ao carrinho</Button>
     </Wrapper>
   );
 }
