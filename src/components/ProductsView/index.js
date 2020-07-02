@@ -18,8 +18,10 @@ const ProductsWrapper = styled.div`
 
 const ButtonsWrapper = styled.div`
   width: 100%;
+  max-width: 240px;
   display: flex;
   justify-content: space-between;
+  margin: 12px auto;
 `;
 
 const NavigationButton = styled.button`
@@ -28,7 +30,9 @@ const NavigationButton = styled.button`
   background-color: #3b6bb8;
   color: #fff;
   border-radius: 8px;
-  padding: 8px 4px;
+  padding: 12px 6px;
+  margin: 2px;
+  box-sizing: border-box;
   cursor: pointer;
 `;
 
