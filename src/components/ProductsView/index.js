@@ -5,6 +5,7 @@ import Product from "../Product";
 
 const Wrapper = styled.div`
   width: 100%;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
 `;
