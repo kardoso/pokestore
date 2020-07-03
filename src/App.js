@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { Topbar, ProductsView } from "./components";
+import { Topbar, ProductsView, Footer } from "./components";
 
 const MainContainer = styled.div`
   display: flex;
@@ -36,6 +36,7 @@ function App() {
     <MainContainer className="App">
       <Topbar cart={cart} clearCart={handleClearCart} />
       <ProductsView addToCart={handleAddToCart} />
+      <Footer />
     </MainContainer>
   );
 }

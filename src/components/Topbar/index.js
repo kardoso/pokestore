@@ -32,11 +32,11 @@ const Logo = styled.img`
   margin-right: auto;
   padding: 0px 12px 8px;
 
-  @media (max-width: 360px) {
-    width: 80%;
-    max-height: auto;
-    margin-left: auto;
-  }
+    @media (max-width: 360px) {
+      width: 80%;
+      max-height: auto;
+      margin-left: auto;
+    }
 `;
 
 function Topbar({ cart, clearCart }) {
