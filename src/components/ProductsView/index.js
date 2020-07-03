@@ -36,6 +36,10 @@ const NavigationButton = styled.button`
   box-sizing: border-box;
   cursor: pointer;
 
+  &:hover {
+    background-color: #2e519a;
+  }
+
   &:disabled {
     background: #b4b4b4;
     cursor: not-allowed;

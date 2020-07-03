@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "8px",
     fontWeight: "bold",
     cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#7FCD9B",
+    },
   },
 }));
 
@@ -112,6 +115,10 @@ const PurchaseButton = styled.button`
   margin: 4px 0px;
   padding: 8px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #2e519a;
+  }
 
   &:disabled {
     background: #b4b4b4;

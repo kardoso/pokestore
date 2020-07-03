@@ -42,6 +42,10 @@ const Button = styled.button`
   border-radius: 8px;
   padding: 8px 4px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #ffb500;
+  }
 `;
 
 function Product({ data, addToCart }) {
