@@ -112,6 +112,11 @@ const PurchaseButton = styled.button`
   margin: 4px 0px;
   padding: 8px;
   cursor: pointer;
+
+  &:disabled {
+    background: #b4b4b4;
+    cursor: not-allowed;
+  }
 `;
 
 function CartView({ cart, clearCart }) {
@@ -168,7 +173,9 @@ function CartView({ cart, clearCart }) {
               )
               .reduce((a, b) => a + b, 0)}
       </TotalPrice>
-      <PurchaseButton onClick={finishPurchase}>Finalizar compra</PurchaseButton>
+      <PurchaseButton onClick={finishPurchase} disabled={cart.length <= 0}>
+        Finalizar compra
+      </PurchaseButton>
       <Modal
         open={open}
         onClose={handleClose}
