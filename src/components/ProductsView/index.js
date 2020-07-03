@@ -34,6 +34,11 @@ const NavigationButton = styled.button`
   margin: 2px;
   box-sizing: border-box;
   cursor: pointer;
+
+  &:disabled {
+    background: #b4b4b4;
+    cursor: not-allowed;
+  }
 `;
 
 function ProductsView({ addToCart }) {
@@ -86,20 +91,18 @@ function ProductsView({ addToCart }) {
         ))}
       </ProductsWrapper>
       <ButtonsWrapper>
-        {pageNavigation.previous !== null ? (
-          <NavigationButton onClick={handlePreviousPage}>
-            {"<"} Página anterior
-          </NavigationButton>
-        ) : (
-          <div />
-        )}
-        {pageNavigation.next !== null ? (
-          <NavigationButton onClick={handleNextPage}>
-            Próxima página {">"}
-          </NavigationButton>
-        ) : (
-          <div />
-        )}
+        <NavigationButton
+          onClick={handlePreviousPage}
+          disabled={pageNavigation.previous === null}
+        >
+          {"<"} Página anterior
+        </NavigationButton>
+        <NavigationButton
+          onClick={handleNextPage}
+          disabled={pageNavigation.next === null}
+        >
+          Próxima página {">"}
+        </NavigationButton>
       </ButtonsWrapper>
     </Wrapper>
   );
