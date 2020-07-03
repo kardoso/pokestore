@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   max-width: 960px;
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 const ProductsWrapper = styled.div`

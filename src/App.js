@@ -33,7 +33,7 @@ function App() {
   };
 
   return (
-    <MainContainer className="App">
+    <MainContainer className="App" style={{ minHeight: "100vh" }}>
       <Topbar cart={cart} clearCart={handleClearCart} />
       <ProductsView addToCart={handleAddToCart} />
       <Footer />
