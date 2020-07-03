@@ -1,5 +1,5 @@
 import React from "react";
-import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,8 +25,12 @@ export default function CartDrawer({ cart, clearCart }) {
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
+
     if (
+      event &&
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
     ) {
@@ -45,13 +49,14 @@ export default function CartDrawer({ cart, clearCart }) {
           Carrinho
         </span>
       </CartLink>
-      <Drawer
+      <SwipeableDrawer
         anchor={"right"}
         open={state["right"]}
         onClose={toggleDrawer("right", false)}
+        onOpen={toggleDrawer("right", true)}
       >
         <CartView cart={cart} clearCart={clearCart} />
-      </Drawer>
+      </SwipeableDrawer>
     </React.Fragment>
   );
 }
