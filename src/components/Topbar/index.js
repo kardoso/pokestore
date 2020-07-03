@@ -25,24 +25,31 @@ const Wrapper = styled.div`
   }
 `;
 
-const Logo = styled.img`
+const Logo = styled.a`
   width: auto;
   max-width: 190px;
   max-height: 70%;
   margin-right: auto;
   padding: 0px 12px 8px;
 
-    @media (max-width: 360px) {
-      width: 80%;
-      max-height: auto;
-      margin-left: auto;
-    }
+  @media (max-width: 360px) {
+    width: 80%;
+    max-height: auto;
+    margin-left: auto;
+  }
+`;
+
+const LogoImage = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 function Topbar({ cart, clearCart }) {
   return (
     <Wrapper>
-      <Logo src="/img/pokestore.png" />
+      <Logo href="/">
+        <LogoImage src="/img/pokestore.png" />
+      </Logo>
       <CartDrawer cart={cart} clearCart={clearCart} />
     </Wrapper>
   );
