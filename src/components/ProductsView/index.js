@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Product from "../Product";
+import SearchBar from "../SearchBar";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -56,8 +57,8 @@ function ProductsView({ addToCart }) {
 
   useEffect(() => {
     fetch(apiUrl)
-      .then((data) => {
-        return data.json();
+      .then((response) => {
+        return response.json();
       })
       .then((data) => {
         setProducts(
@@ -77,6 +78,29 @@ function ProductsView({ addToCart }) {
       });
   }, [apiUrl]);
 
+  const resetProducts = () => {
+    fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=20")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setProducts(
+          data.results.map((product) => {
+            const url = product.url.replace(/\/$/, "");
+            const id = url.substr(url.lastIndexOf("/") + 1);
+            return {
+              id,
+              ...product,
+              price: "R$ 40,00",
+              image: `https://pokeres.bastionbot.org/images/pokemon/${id}.png`,
+            };
+          })
+        );
+
+        setPageNavigation({ next: data.next, previous: data.previous });
+      });
+  }
+
   const handleNextPage = () => {
     setApiUrl(pageNavigation.next);
   };
@@ -87,6 +111,11 @@ function ProductsView({ addToCart }) {
 
   return (
     <Wrapper>
+      <SearchBar
+        setProducts={setProducts}
+        setPageNavigation={setPageNavigation}
+        resetProducts={resetProducts}
+      />
       <ProductsWrapper>
         {products.map((product) => (
           <Product
